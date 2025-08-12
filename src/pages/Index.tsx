@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import HeroSection from '@/components/HeroSection';
 import PropertiesSection, { SearchFilters } from '@/components/PropertiesSection';
-import ContactSection from '@/components/ContactSection';
+import ContactSection, { FloatingContactButton } from '@/components/ContactSection';
 import ContactModal from '@/components/ContactModal';
 import { Property } from '@/data/properties';
 
@@ -46,6 +46,9 @@ const Index = () => {
         isOpen={isContactModalOpen}
         onClose={handleCloseContactModal}
       />
+
+      {/* Floating Contact Buttons */}
+      <FloatingContactButton />
     </div>
   );
 };

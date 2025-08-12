@@ -36,7 +36,7 @@ const PropertiesSection = ({ searchFilters, onContactProperty }: PropertiesSecti
     minRooms: 1,
     maxRooms: 6,
     minPrice: 0,
-    maxPrice: 10000,
+    maxPrice: 150000,
     amenities: []
   });
 
@@ -94,7 +94,7 @@ const PropertiesSection = ({ searchFilters, onContactProperty }: PropertiesSecti
     if (detailedFilters.cities.length > 0) count++;
     if (detailedFilters.propertyTypes.length > 0) count++;
     if (detailedFilters.minRooms > 1 || detailedFilters.maxRooms < 6) count++;
-    if (detailedFilters.minPrice > 0 || detailedFilters.maxPrice < 10000) count++;
+    if (detailedFilters.minPrice > 0 || detailedFilters.maxPrice < 150000) count++;
     if (detailedFilters.amenities.length > 0) count++;
     return count;
   }, [detailedFilters]);
@@ -106,7 +106,7 @@ const PropertiesSection = ({ searchFilters, onContactProperty }: PropertiesSecti
       minRooms: 1,
       maxRooms: 6,
       minPrice: 0,
-      maxPrice: 10000,
+      maxPrice: 150000,
       amenities: []
     });
   };

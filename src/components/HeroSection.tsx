@@ -44,17 +44,17 @@ const HeroSection = ({ onSearch }: HeroSectionProps) => {
           backgroundImage: `url(${heroImage})`,
         }}
       />
-      <div className="absolute inset-0 hero-gradient opacity-90" />
+      <div className="absolute inset-0 hero-gradient opacity-40" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <div className="max-w-4xl mx-auto animate-fade-in-up">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             Find Your Perfect
-            <span className="block text-blue-200">Rental Home</span>
+            <span className="block text-blue-200">Nepali Home</span>
           </h1>
           <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-2xl mx-auto">
-            Discover amazing rental properties with EasyRent. From cozy studios to luxury villas, find your next home today.
+            Discover amazing rental properties across Nepal with EasyRent. From cozy studios in Kathmandu to luxury villas in Pokhara, find your next home in the heart of the Himalayas.
           </p>
           
           {/* Search Form */}
@@ -64,7 +64,7 @@ const HeroSection = ({ onSearch }: HeroSectionProps) => {
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5" />
                   <Input
-                    placeholder="Enter city or area"
+                    placeholder="Enter Nepali city or area"
                     value={filters.location}
                     onChange={(e) => updateFilter('location', e.target.value)}
                     className="pl-10 h-12 text-lg border-2 focus:border-primary"
@@ -106,11 +106,11 @@ const HeroSection = ({ onSearch }: HeroSectionProps) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">Any Price</SelectItem>
-                  <SelectItem value="2000">Under $2,000</SelectItem>
-                  <SelectItem value="3000">Under $3,000</SelectItem>
-                  <SelectItem value="4000">Under $4,000</SelectItem>
-                  <SelectItem value="5000">Under $5,000</SelectItem>
-                  <SelectItem value="6000">Under $6,000</SelectItem>
+                  <SelectItem value="30000">Under ₹30,000</SelectItem>
+                  <SelectItem value="50000">Under ₹50,000</SelectItem>
+                  <SelectItem value="75000">Under ₹75,000</SelectItem>
+                  <SelectItem value="100000">Under ₹100,000</SelectItem>
+                  <SelectItem value="150000">Under ₹150,000</SelectItem>
                 </SelectContent>
               </Select>
             </div>

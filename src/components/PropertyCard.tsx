@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Property } from '@/data/properties';
+import { useState } from 'react';
 
 interface PropertyCardProps {
   property: Property;
@@ -10,6 +11,8 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ property, onContact }: PropertyCardProps) => {
+  const [imageError, setImageError] = useState(false);
+  
   const getAmenityIcon = (amenity: string) => {
     switch (amenity.toLowerCase()) {
       case 'wifi':
@@ -21,14 +24,32 @@ const PropertyCard = ({ property, onContact }: PropertyCardProps) => {
     }
   };
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  // Check if imageUrl is valid
+  const hasValidImage = property.imageUrl && typeof property.imageUrl === 'string' && property.imageUrl.length > 0;
+
   return (
     <Card className="property-card overflow-hidden group">
       <div className="relative overflow-hidden">
-        <img 
-          src={property.imageUrl} 
-          alt={property.title}
-          className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-        />
+        {!imageError && hasValidImage ? (
+          <img 
+            src={property.imageUrl} 
+            alt={property.title}
+            className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+            onError={handleImageError}
+          />
+        ) : (
+          <div className="w-full h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+            <div className="text-center text-blue-600">
+              <div className="text-4xl mb-2">🏠</div>
+              <div className="text-sm font-medium">{property.type}</div>
+              <div className="text-xs mt-1">{property.city}</div>
+            </div>
+          </div>
+        )}
         <div className="absolute top-4 left-4">
           <Badge variant="secondary" className="bg-white/90 text-primary font-semibold">
             {property.type.charAt(0).toUpperCase() + property.type.slice(1)}
@@ -92,7 +113,7 @@ const PropertyCard = ({ property, onContact }: PropertyCardProps) => {
         
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-3xl font-bold price-text">${property.price.toLocaleString()}</span>
+            <span className="text-3xl font-bold price-text">₹{property.price.toLocaleString()}</span>
             <span className="text-muted-foreground ml-1">/month</span>
           </div>
           <Button 

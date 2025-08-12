@@ -163,27 +163,27 @@ const FilterPanel = ({ filters, onFiltersChange, onClearAll }: FilterPanelProps)
         <div className="space-y-4">
           <div>
             <Label className="text-sm font-medium">
-              Min Price: ${filters.minPrice.toLocaleString()}
+              Min Price: ₹{filters.minPrice.toLocaleString()}
             </Label>
             <Slider
               value={[filters.minPrice]}
               onValueChange={([value]) => updateFilter('minPrice', value)}
-              max={10000}
+              max={150000}
               min={0}
-              step={100}
+              step={1000}
               className="mt-2"
             />
           </div>
           <div>
             <Label className="text-sm font-medium">
-              Max Price: ${filters.maxPrice.toLocaleString()}
+              Max Price: ₹{filters.maxPrice.toLocaleString()}
             </Label>
             <Slider
               value={[filters.maxPrice]}
               onValueChange={([value]) => updateFilter('maxPrice', value)}
-              max={10000}
+              max={150000}
               min={0}
-              step={100}
+              step={1000}
               className="mt-2"
             />
           </div>
