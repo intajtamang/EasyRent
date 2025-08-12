@@ -2,39 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* EasyRent Design System - All colors, gradients, fonts, etc defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 9% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 9% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 9% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 195 93% 28%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 195 93% 22%;
+    
+    --secondary: 195 20% 95%;
+    --secondary-foreground: 220 9% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 6% 97%;
+    --muted-foreground: 220 5% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 195 35% 92%;
+    --accent-foreground: 195 93% 28%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 195 93% 28%;
+
+    /* EasyRent specific design tokens */
+    --hero-gradient-start: 195 100% 35%;
+    --hero-gradient-end: 220 85% 25%;
+    --property-card-shadow: 220 13% 75%;
+    --search-background: 0 0% 100%;
+    --filter-active: 195 93% 28%;
+    
+    /* Price and rating colors */
+    --price-color: 142 76% 36%;
+    --rating-color: 45 93% 58%;
+    
+    /* Animation and transition tokens */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease-out;
+    --shadow-card: 0 4px 20px -2px hsl(var(--property-card-shadow) / 0.15);
+    --shadow-card-hover: 0 8px 32px -4px hsl(var(--property-card-shadow) / 0.25);
 
     --radius: 0.5rem;
 
@@ -102,4 +120,65 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Section */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--hero-gradient-start)), hsl(var(--hero-gradient-end)));
+  }
+  
+  /* Property Cards */
+  .property-card {
+    @apply transition-all duration-300 ease-out;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .property-card:hover {
+    @apply transform -translate-y-1;
+    box-shadow: var(--shadow-card-hover);
+  }
+  
+  /* Search Animation */
+  .search-focus {
+    @apply ring-2 ring-primary ring-opacity-50;
+    transition: var(--transition-smooth);
+  }
+  
+  /* Price styling */
+  .price-text {
+    color: hsl(var(--price-color));
+    @apply font-semibold;
+  }
+  
+  /* Rating styling */
+  .rating-text {
+    color: hsl(var(--rating-color));
+  }
+  
+  /* Animate in */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stagger animation delays */
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
 }
